@@ -39,3 +39,9 @@ You can't view the CNAME file, meaning these fail:
 
 - `https://www.nnums.com/CNAME`
 - `https://www.nnums.com/cname`
+
+## Files without extensions
+
+I tried a non-cname file without an extension and it was made available to the browser.
+
+My browser didn't want to treat it as text, but instead offered to download it and let me inspect it outside the browser.
