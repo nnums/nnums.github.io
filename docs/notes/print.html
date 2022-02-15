@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="approach.html"><strong aria-hidden="true">1.</strong> Approach</a></li><li class="chapter-item expanded "><a href="cname.html"><strong aria-hidden="true">2.</strong> CNAME</a></li><li class="chapter-item expanded "><a href="pages_rendering_notes.html"><strong aria-hidden="true">3.</strong> Pages Rendering Notes</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="approach.html"><strong aria-hidden="true">1.</strong> Approach</a></li><li class="chapter-item expanded "><a href="cname.html"><strong aria-hidden="true">2.</strong> CNAME</a></li><li class="chapter-item expanded "><a href="pages_rendering_notes.html"><strong aria-hidden="true">3.</strong> Pages Rendering Notes</a></li><li class="chapter-item expanded "><a href="compiling_this_book.html"><strong aria-hidden="true">4.</strong> Compiling this book using Mdbook</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -136,6 +136,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="approach"><a class="header" href="#approach">Approach</a></h1>
+<h2 id="2-goals"><a class="header" href="#2-goals">2 Goals</a></h2>
 <p>This repository is built around 2 goals:</p>
 <ol>
 <li>Create a useful artifact for the web, meaning readable fast html.</li>
@@ -148,6 +149,12 @@ This can look ugly when you read the source code but should be performant and pr
 It should have legible, maintainable source code.
 So that will mean markdown or jupyter notebooks depending on what is convenient at the time.</p>
 <p>The flow should typically be from source to rendered, and the rendering will be mostly automatic using various tools.</p>
+<h2 id="current-hosting-method-github-pages"><a class="header" href="#current-hosting-method-github-pages">Current hosting method: Github pages</a></h2>
+<p>I love making web apps and I love making them fast and reliable.
+Nothing beats static websites for speed, availability, or reliability.</p>
+<p>So this website is static.
+Currently, it's hosted at Github, using the wonderful <a href="https://pages.github.com/">Github Pages</a> service,
+which lets me attach a custom domain.  In my case, that's <a href="https://www.nnums.com">www.nnums.com</a> .</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cname"><a class="header" href="#cname">CNAME</a></h1>
 <p>Github pages, which I'm using as I start this thing up, requires that you have a CNAME file.</p>
 <p>If your site is defined in the root directory (<code>/</code>), the CNAME file should be in the root directory.
@@ -189,6 +196,13 @@ These give the same result:</p>
 <h2 id="files-without-extensions"><a class="header" href="#files-without-extensions">Files without extensions</a></h2>
 <p>I tried a non-cname file without an extension and it was made available to the browser.</p>
 <p>My browser didn't want to treat it as text, but instead offered to download it and let me inspect it outside the browser.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compiling-this-book-using-mdbook"><a class="header" href="#compiling-this-book-using-mdbook">Compiling this book using Mdbook</a></h1>
+<p>This book takes the form of a series of markdown documents bound together by links from an index defined in <code>Summary.md</code>.</p>
+<p>These get rendered by <a href="https://rust-lang.github.io/mdBook/">mdbook</a> into book form.</p>
+<p>To install mdbook, I use cargo, the rust package manager, as in</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<p>To compile the book, use the command for compiling it that is documented in the repo Makefile by using the command <code>make mdbook</code>.</p>
 
                     </main>
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Pages Rendering Notes - Nnums website meta notes</title>
+        <title>Compiling this book using Mdbook - Nnums website meta notes</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="approach.html"><strong aria-hidden="true">1.</strong> Approach</a></li><li class="chapter-item expanded "><a href="cname.html"><strong aria-hidden="true">2.</strong> CNAME</a></li><li class="chapter-item expanded "><a href="pages_rendering_notes.html" class="active"><strong aria-hidden="true">3.</strong> Pages Rendering Notes</a></li><li class="chapter-item expanded "><a href="compiling_this_book.html"><strong aria-hidden="true">4.</strong> Compiling this book using Mdbook</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="approach.html"><strong aria-hidden="true">1.</strong> Approach</a></li><li class="chapter-item expanded "><a href="cname.html"><strong aria-hidden="true">2.</strong> CNAME</a></li><li class="chapter-item expanded "><a href="pages_rendering_notes.html"><strong aria-hidden="true">3.</strong> Pages Rendering Notes</a></li><li class="chapter-item expanded "><a href="compiling_this_book.html" class="active"><strong aria-hidden="true">4.</strong> Compiling this book using Mdbook</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,49 +134,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="pages-rendering-notes"><a class="header" href="#pages-rendering-notes">Pages Rendering Notes</a></h1>
-<p>As I experiment with pages, I'll take down notes to present the experimental results.</p>
-<h2 id="it-takes-time-about-1-or-2-minutes-for-a-change-to-propagate-to-the-website"><a class="header" href="#it-takes-time-about-1-or-2-minutes-for-a-change-to-propagate-to-the-website">It takes time (about 1 or 2 minutes?) for a change to propagate to the website</a></h2>
-<p>When I add or change content in the docs file and push that change to github, I typically need to wait a couple of minutes before I can see the results of that change.</p>
-<h2 id="indexhtml--"><a class="header" href="#indexhtml--"><code>index.html</code> == <code>/</code></a></h2>
-<p>I get the same result from each of the following urls:</p>
-<ul>
-<li><code>https://www.nnums.com</code></li>
-<li><code>https://www.nnums.com/</code></li>
-<li><code>https://www.nnums.com/index</code></li>
-<li><code>https://www.nnums.com/index.html</code></li>
-</ul>
-<p>Note that I don't get redirects, just identical content.</p>
-<h2 id="otherhtml--other"><a class="header" href="#otherhtml--other"><code>other.html</code> == <code>other</code></a></h2>
-<p>Similarly, I can toggle <code>.html</code> for other pages as well.
-These give the same result:</p>
-<ul>
-<li><code>https://www.nnums.com/other</code></li>
-<li><code>https://www.nnums.com/other.html</code></li>
-</ul>
-<h2 id="markdown-is-rendered-as-plain-text"><a class="header" href="#markdown-is-rendered-as-plain-text">Markdown is rendered as plain text</a></h2>
-<p>I added a markdown file and took a look and what I say was raw markdown without any highlighting or rendering.</p>
-<h2 id="directories-work"><a class="header" href="#directories-work">Directories work</a></h2>
-<p>I tried <code>/docs/notes/note.html</code> and it worked fine under <code>https://www.nnums.com/notes/note</code> and its html twin.</p>
-<h2 id="cname-isnt-accessible"><a class="header" href="#cname-isnt-accessible">CNAME isn't accessible</a></h2>
-<p>You can't view the CNAME file, meaning these fail:</p>
-<ul>
-<li><code>https://www.nnums.com/CNAME</code></li>
-<li><code>https://www.nnums.com/cname</code></li>
-</ul>
-<h2 id="files-without-extensions"><a class="header" href="#files-without-extensions">Files without extensions</a></h2>
-<p>I tried a non-cname file without an extension and it was made available to the browser.</p>
-<p>My browser didn't want to treat it as text, but instead offered to download it and let me inspect it outside the browser.</p>
+                        <h1 id="compiling-this-book-using-mdbook"><a class="header" href="#compiling-this-book-using-mdbook">Compiling this book using Mdbook</a></h1>
+<p>This book takes the form of a series of markdown documents bound together by links from an index defined in <code>Summary.md</code>.</p>
+<p>These get rendered by <a href="https://rust-lang.github.io/mdBook/">mdbook</a> into book form.</p>
+<p>To install mdbook, I use cargo, the rust package manager, as in</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<p>To compile the book, use the command for compiling it that is documented in the repo Makefile by using the command <code>make mdbook</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="cname.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="pages_rendering_notes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="compiling_this_book.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -184,11 +155,8 @@ These give the same result:</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="cname.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="pages_rendering_notes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="compiling_this_book.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
