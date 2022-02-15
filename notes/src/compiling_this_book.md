@@ -1,4 +1,4 @@
-# Compiling this book
+# Compiling this book using Mdbook
 
 This book takes the form of a series of markdown documents bound together by links from an index defined in `Summary.md`.
 
@@ -10,8 +10,4 @@ To install mdbook, I use cargo, the rust package manager, as in
 cargo install mdbook
 ```
 
-To run build for the book, I specify the source and target directories like this:
-
-```bash
-mdbook build notes --dest-dir ../docs/notes
-```
+To compile the book, use the command for compiling it that is documented in the repo Makefile by using the command `make mdbook`.
