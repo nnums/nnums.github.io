@@ -1,7 +1,7 @@
 .PHONY: mdbook
 mdbook:
-	mdbook build notes --dest-dir ../docs/notes
+	mdbook build meta-notes --dest-dir ../docs/meta-notes
 .PHONY: mdbook-serve
 mdbook-serve:
-	mdbook serve notes --open
+	mdbook serve meta-notes --open
 
