@@ -1,4 +1,4 @@
-# Pages Rendering Notes
+# Github Pages Rendering Notes
 
 As I experiment with pages, I'll take down notes to present the experimental results.
 
