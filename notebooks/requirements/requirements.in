@@ -1,0 +1,8 @@
+# Enable jupyter notebook
+jupyter
+
+# Utility for syncing notebooks with python or markdown
+jupytext
+
+# For pip-compile so that we can separate intent from detailed requirements
+pip-tools
