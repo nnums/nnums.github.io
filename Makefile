@@ -13,7 +13,6 @@ mdbook-serve:
 jupyter:
 	. notebooks/venv/bin/activate && cd notebooks/src && jupyter-lab
 
-
 # Compile the notebooks to html in docs/notebooks
 .PHONY: notebooks
 notebooks:
