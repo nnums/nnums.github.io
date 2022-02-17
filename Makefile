@@ -1,10 +1,10 @@
 .PHONY: mdbook
 mdbook:
-	mdbook build meta-notes --dest-dir ../docs/meta-notes
+	mdbook build metanotes --dest-dir ../docs/metanotes
 
 .PHONY: mdbook-serve
 mdbook-serve:
-	mdbook serve meta-notes --open
+	mdbook serve metanotes --open
 
 .PHONY: jupyter
 jupyter:
