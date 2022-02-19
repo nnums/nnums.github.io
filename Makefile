@@ -17,3 +17,8 @@ jupyter:
 .PHONY: notebooks
 notebooks:
 	bin/notebooks.sh
+
+.PHONY: static
+static:
+	open "http://localhost:8000"
+	python3 -m http.server --directory docs
