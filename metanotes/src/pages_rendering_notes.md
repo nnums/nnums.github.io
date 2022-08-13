@@ -27,7 +27,7 @@ These give the same result:
 
 ## Markdown is rendered as plain text
 
-I added a markdown file and took a look and what I say was raw markdown without any highlighting or rendering.
+I added a markdown file and took a look and what I saw was raw markdown without any highlighting or rendering.
 
 ## Directories work
 
