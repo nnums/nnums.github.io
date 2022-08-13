@@ -1,5 +1,0 @@
-# Don't commit ipynb checkpoints
-.ipynb_checkpoints/
-
-# Don't commit anything in the python virtual environment
-venv/
