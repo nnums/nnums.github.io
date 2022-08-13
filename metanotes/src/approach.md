@@ -14,7 +14,7 @@ This can look ugly when you read the source code but should be performant and pr
 
 The other form will be in the root under various non-docs subdirectories.
 It should have legible, maintainable source code.
-So that will mean markdown or jupyter notebooks depending on what is convenient at the time.
+So that will mean markdown or other text based file types depending on what is convenient at the time.
 
 The flow should typically be from source to rendered, and the rendering will be mostly automatic using various tools.
 
