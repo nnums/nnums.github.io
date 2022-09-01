@@ -2,6 +2,7 @@
 .PHONY: mdbook
 mdbook:
 	mdbook build metanotes --dest-dir ../docs/metanotes
+	mdbook build user-guide --dest-dir ../docs/user-guide
 
 # Open the mdbook metabook
 .PHONY: mdbook-serve
