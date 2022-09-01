@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Stream to BackBlaze B2 - Nnums User Guide</title>
+        <title>Why stream your events to Backblaze - Nnums User Guide</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="stream-to-backblaze-b2.html" class="active"><strong aria-hidden="true">1.</strong> Stream to BackBlaze B2</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="why-stream-events-to-backblaze.html" class="active"><strong aria-hidden="true">1.</strong> Why stream your events to Backblaze</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,7 +134,57 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="stream-to-backblaze-b2"><a class="header" href="#stream-to-backblaze-b2">Stream to Backblaze B2</a></h1>
+                        <h1 id="why-store-your-events-in-backblaze"><a class="header" href="#why-store-your-events-in-backblaze">Why store your events in Backblaze</a></h1>
+<p>In life and business, you generate data.
+Sometimes you want to store that data and not worry about it.</p>
+<p>You don't want to have to ask</p>
+<ul>
+<li>Will I lose my data because of a random computer event?</li>
+<li>Am I paying more than I need to to store my data?</li>
+<li>Will my database kick the bucket?</li>
+</ul>
+<p>What I love about Backblaze B2 is that it's A) very durable, and B) very cheap, and C) very low maintenance.</p>
+<h2 id="durability"><a class="header" href="#durability">Durability</a></h2>
+<p>Backblaze is a company focused around backups.
+Their whole mission is around keeping data that you give to them safe.
+They've been focusing on it for a long time now and are very good at it and have applied that expertise to their B2 service.</p>
+<p>Here's a recent BackBlaze article with thoughts around durability:</p>
+<p><a href="https://www.backblaze.com/blog/cloud-storage-durability/">https://www.backblaze.com/blog/cloud-storage-durability/</a></p>
+<h2 id="price"><a class="header" href="#price">Price</a></h2>
+<p>Four of my most beloved storage engines are Redis, Postgres, S3, and B2.</p>
+<p>Amazon s3 is very cheap for data storage compared, for example, to hosted Postgres.  And Postgres, of course, is very cheap compared to say hosted Redis.
+But Backblaze B2 is quite cheap compared to Amazon s3.</p>
+<ul>
+<li>The monthly rate for storage in <code>s3</code> is <code>$0.021 GB/Month</code>.  For <code>b2</code> it's <code>$0.005 GB/Month</code>, so over <code>4</code> times cheaper</li>
+<li>The rate for download from <code>s3</code> is <code>$0.05 / GB</code>.  For <code>b2</code> it's <code>$0.01 / GB</code>, so <code>5</code> times cheaper.</li>
+</ul>
+<p>That means that if <code>s3</code> is costing you a significant amount of money, you can save most of it if you can swith over to <code>b2</code>.</p>
+<h2 id="maintenance"><a class="header" href="#maintenance">Maintenance</a></h2>
+<p>You can pay as much or as little attention as you want to your B2 storage.
+It's the closest you can get to no-worry storage.</p>
+<p>Actually, for object storage (at least from established services like B2 or S3) pretty much your only risk is account risk.</p>
+<ol>
+<li>Are you going to lose your credentials?</li>
+<li>Will your credit card go bad?</li>
+</ol>
+<ul>
+<li>Losing your credentials isn't a huge risk as long as you keep access to the email address or phone number those credentials are tied to.</li>
+<li>Credit card risk is up to you.  However, it's worth noting that B2 has a generous free tier, meaning that your first 10GB of storage are free.</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>Basically, if you want to store information and be able to keep it with the least worry possible, B2 is hard to beat.</p>
+<h2 id="ok-b2-is-amazing--what-does-that-have-to-do-with-nnums"><a class="header" href="#ok-b2-is-amazing--what-does-that-have-to-do-with-nnums">Ok, B2 is amazing.  What does that have to do with Nnums?</a></h2>
+<p>Because B2 is amazing, we think that you should be able to stream your data to it.
+However, there are issues with that.</p>
+<ul>
+<li>Like all object storage B2 storage is not appendable.</li>
+<li>B2 upload is slow.</li>
+<li>B2 objects work best if kept to a reasonable size.</li>
+</ul>
+<p>Basically, hundreds or thousands or millions of rapid tiny saves are the exact opposite of the sweet spot for object storage.</p>
+<p>Nnums offers an append layer that allows you to stream information to nnums and have nnums handle the appending.
+Then Nnums saves the data to B2 in an organized way.</p>
+<p>In a nutshell, Nnums makes it simple and cheap to stream data to object storage.</p>
 
                     </main>
 
