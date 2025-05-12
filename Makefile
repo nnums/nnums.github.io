@@ -9,16 +9,6 @@ mdbook:
 mdbook-serve:
 	mdbook serve metanotes --open
 
-# Run jupyter-lab
-.PHONY: jupyter
-jupyter:
-	. notebooks/venv/bin/activate && cd notebooks/src && jupyter-lab
-
-# Compile the notebooks to html in docs/notebooks
-.PHONY: notebooks
-notebooks:
-	bin/notebooks.sh
-
 .PHONY: static
 static:
 	open "http://localhost:8000"

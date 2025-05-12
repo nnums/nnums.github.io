@@ -25,4 +25,4 @@ Nothing beats static websites for speed, availability, or reliability.
 
 So this website is static.
 Currently, it's hosted at Github, using the wonderful [Github Pages](https://pages.github.com/) service,
-which lets me attach a custom domain.  In my case, that's [www.nnums.com](https://www.nnums.com) .
+which lets me attach a custom domain.  In my case, that's [nnums.com](https://nnums.com) .

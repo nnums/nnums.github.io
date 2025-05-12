@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Nnums website meta notes</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
+
+
         <!-- Custom HTML head -->
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -17,25 +19,29 @@
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
         <link rel="stylesheet" href="css/print.css" media="print">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
         <link rel="stylesheet" href="fonts/fonts.css">
+
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -51,27 +57,34 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
 
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -81,20 +94,42 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -111,6 +146,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+
                     </div>
                 </div>
 
@@ -124,8 +160,9 @@
                         </ul>
                     </div>
                 </div>
+
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -138,7 +175,7 @@
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <p>I'm learning as I go how to make this website, and I figured I might as well make my notes on how to do it public.</p>
 <p>Maybe they'll help someone, and certainly having a searchable book of notes that is always available will help me.</p>
-<p>So think of this mini-book as a metabook -- not so much the content of the www.nnums.com site as a whole, but notes on how to make the site work.</p>
+<p>So think of this mini-book as a metabook -- not so much the content of the &lt;nnums.com&gt; site as a whole, but notes on how to make the site work.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="approach"><a class="header" href="#approach">Approach</a></h1>
 <h2 id="2-goals"><a class="header" href="#2-goals">2 Goals</a></h2>
 <p>This repository is built around 2 goals:</p>
@@ -158,13 +195,13 @@ So that will mean markdown or other text based file types depending on what is c
 Nothing beats static websites for speed, availability, or reliability.</p>
 <p>So this website is static.
 Currently, it's hosted at Github, using the wonderful <a href="https://pages.github.com/">Github Pages</a> service,
-which lets me attach a custom domain.  In my case, that's <a href="https://www.nnums.com">www.nnums.com</a> .</p>
+which lets me attach a custom domain.  In my case, that's <a href="https://nnums.com">nnums.com</a> .</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cname"><a class="header" href="#cname">CNAME</a></h1>
 <p>Github pages, which I'm using as I start this thing up, requires that you have a CNAME file.</p>
 <p>If your site is defined in the root directory (<code>/</code>), the CNAME file should be in the root directory.
 If your site is defined in the docs directory (<code>/docs</code>), the CNAME file should be in the docs directory.</p>
-<p>In my case, I'm displaying the rendered site at <code>https://www.nnums.com</code> so the CNAME contents are set to</p>
-<pre><code class="language-txt">www.nnums.com
+<p>In my case, I'm displaying the rendered site at <code>https://nnums.com</code> so the CNAME contents are set to</p>
+<pre><code class="language-txt">nnums.com
 </code></pre>
 <p>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="github-pages-rendering-notes"><a class="header" href="#github-pages-rendering-notes">Github Pages Rendering Notes</a></h1>
@@ -174,28 +211,28 @@ If your site is defined in the docs directory (<code>/docs</code>), the CNAME fi
 <h2 id="indexhtml--"><a class="header" href="#indexhtml--"><code>index.html</code> == <code>/</code></a></h2>
 <p>I get the same result from each of the following urls:</p>
 <ul>
-<li><code>https://www.nnums.com</code></li>
-<li><code>https://www.nnums.com/</code></li>
-<li><code>https://www.nnums.com/index</code></li>
-<li><code>https://www.nnums.com/index.html</code></li>
+<li><code>https://nnums.com</code></li>
+<li><code>https://nnums.com/</code></li>
+<li><code>https://nnums.com/index</code></li>
+<li><code>https://nnums.com/index.html</code></li>
 </ul>
 <p>Note that I don't get redirects, just identical content.</p>
 <h2 id="otherhtml--other"><a class="header" href="#otherhtml--other"><code>other.html</code> == <code>other</code></a></h2>
 <p>Similarly, I can toggle <code>.html</code> for other pages as well.
 These give the same result:</p>
 <ul>
-<li><code>https://www.nnums.com/other</code></li>
-<li><code>https://www.nnums.com/other.html</code></li>
+<li><code>https://nnums.com/other</code></li>
+<li><code>https://nnums.com/other.html</code></li>
 </ul>
 <h2 id="markdown-is-rendered-as-plain-text"><a class="header" href="#markdown-is-rendered-as-plain-text">Markdown is rendered as plain text</a></h2>
 <p>I added a markdown file and took a look and what I saw was raw markdown without any highlighting or rendering.</p>
 <h2 id="directories-work"><a class="header" href="#directories-work">Directories work</a></h2>
-<p>I tried <code>/docs/notes/note.html</code> and it worked fine under <code>https://www.nnums.com/notes/note</code> and its html twin.</p>
+<p>I tried <code>/docs/notes/note.html</code> and it worked fine under <code>https://nnums.com/notes/note</code> and its html twin.</p>
 <h2 id="cname-isnt-accessible"><a class="header" href="#cname-isnt-accessible">CNAME isn't accessible</a></h2>
 <p>You can't view the CNAME file, meaning these fail:</p>
 <ul>
-<li><code>https://www.nnums.com/CNAME</code></li>
-<li><code>https://www.nnums.com/cname</code></li>
+<li><code>https://nnums.com/CNAME</code></li>
+<li><code>https://nnums.com/cname</code></li>
 </ul>
 <h2 id="files-without-extensions"><a class="header" href="#files-without-extensions">Files without extensions</a></h2>
 <p>I tried a non-cname file without an extension and it was made available to the browser.</p>
@@ -212,31 +249,43 @@ These give the same result:</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+
+
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
             </nav>
 
         </div>
 
-        <script type="text/javascript">
+
+
+
+        <script>
             window.playground_copyable = true;
         </script>
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script type="text/javascript">
+
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
+
+    </div>
     </body>
 </html>

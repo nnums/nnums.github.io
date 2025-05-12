@@ -10,10 +10,10 @@ When I add or change content in the docs file and push that change to github, I 
 
 I get the same result from each of the following urls:
 
-- `https://www.nnums.com`
-- `https://www.nnums.com/`
-- `https://www.nnums.com/index`
-- `https://www.nnums.com/index.html`
+- `https://nnums.com`
+- `https://nnums.com/`
+- `https://nnums.com/index`
+- `https://nnums.com/index.html`
 
 Note that I don't get redirects, just identical content.
 
@@ -22,8 +22,8 @@ Note that I don't get redirects, just identical content.
 Similarly, I can toggle `.html` for other pages as well.
 These give the same result:
 
-- `https://www.nnums.com/other`
-- `https://www.nnums.com/other.html`
+- `https://nnums.com/other`
+- `https://nnums.com/other.html`
 
 ## Markdown is rendered as plain text
 
@@ -31,14 +31,14 @@ I added a markdown file and took a look and what I saw was raw markdown without 
 
 ## Directories work
 
-I tried `/docs/notes/note.html` and it worked fine under `https://www.nnums.com/notes/note` and its html twin.
+I tried `/docs/notes/note.html` and it worked fine under `https://nnums.com/notes/note` and its html twin.
 
 ## CNAME isn't accessible
 
 You can't view the CNAME file, meaning these fail:
 
-- `https://www.nnums.com/CNAME`
-- `https://www.nnums.com/cname`
+- `https://nnums.com/CNAME`
+- `https://nnums.com/cname`
 
 ## Files without extensions
 
